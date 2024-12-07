@@ -8,6 +8,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @previous_post = Post.where("id < ?", @post.id).order(id: :desc).first
+    @next_post = Post.where("id > ?", @post.id).order(id: :asc).first
+    @related_posts = Post.where.not(id: @post.id).limit(5)
   end
 
   # GET /posts/new

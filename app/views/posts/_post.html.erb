@@ -1,14 +1,16 @@
 <div id="<%= dom_id post %>" class="card">
-  <div class='card-header'>
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-  </div>
 
-  <p>
-    <strong>Body:</strong>
-    <%= post.body %>
-  </p>
+
+<div class="card-group" style="width: 18rem;">
+  <div class="card">
+    <img src="https://picsum.photos/200/200" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text"> <%= post.body %> </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"><%= post.created_at %></small>
+    </div>
+  </div>
 
 </div>

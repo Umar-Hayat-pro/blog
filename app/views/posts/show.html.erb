@@ -1,10 +1,31 @@
-<p style="color: green"><%= notice %></p>
+<div class="container my-5">
+  <!-- Post Content -->
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <img src="https://picsum.photos/800/400" class="card-img-top" alt="Post Image">
+        <div class="card-body">
+          <h1 class="card-title"><%= @post.title %></h1>
+          <p class="card-text"><%= @post.body %></p>
+          <p class="text-muted">Published on <%= @post.created_at.strftime('%B %d, %Y') %></p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-outline-primary" %>
+          <%= link_to "Back to Posts", posts_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
 
-<%= render @post %>
-
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
+    <!-- Sidebar: Navigation and Related Posts -->
+    <div class="col-lg-4">
+      <h4>Other Posts</h4>
+      <ul class="list-group">
+        <% @related_posts.each do |post| %>
+          <li class="list-group-item">
+            <%= link_to post.title, post %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

@@ -1,2 +1,78 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="container my-5">
+  <!-- Hero Section -->
+  <div class="text-center mb-5">
+    <h1>Welcome to My Blog</h1>
+    <p class="lead">Discover amazing articles, insights, and stories crafted just for you.</p>
+  </div>
+
+  <!-- Infinite Post Slider -->
+  <div class="mb-5">
+    <h2 class="text-center mb-4">Featured Posts</h2>
+    <div id="postSlider" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @posts.each_with_index do |post, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <div class="d-flex justify-content-center">
+              <div class="card" style="width: 18rem;">
+                <img src="https://picsum.photos/300/200" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= post.title %>
+                  </h5>
+                  <p class="card-text">
+                    <%= truncate(post.body, length: 100) %>
+                  </p>
+                  <%= link_to "Read More" , post, class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Categories Section -->
+  <div class="mb-5">
+    <h2 class="text-center mb-4">Browse by Category</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://picsum.photos/400/300?category" class="card-img-top" alt="Category Image">
+          <div class="card-body">
+            <h5 class="card-title">Technology</h5>
+            <p class="card-text">Explore the latest in tech and innovation.</p>
+            <%= link_to 'Explore' , '#' , class:'btn btn-primary'%>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://picsum.photos/400/300?lifestyle" class="card-img-top" alt="Category Image">
+          <div class="card-body">
+            <h5 class="card-title">Lifestyle</h5>
+            <p class="card-text">Discover tips and insights for a better life.</p>
+            <%= link_to 'Explore' , '#' , class:'btn btn-primary'%>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://picsum.photos/400/300?travel" class="card-img-top" alt="Category Image">
+          <div class="card-body">
+            <h5 class="card-title">Travel</h5>
+            <p class="card-text">Journey into exciting destinations around the globe.</p>
+            <%= link_to 'Explore' , '#' , class:'btn btn-primary'%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call-to-Action Section -->
+  <div class="bg-primary text-white text-center py-5">
+    <h2>Start Your Journey</h2>
+    <p class="lead">Sign up now to receive the latest updates and exclusive content.</p>
+    <%= link_to "Join Now" , '#' , class: "btn btn-light btn-lg" %>
+  </div>
+</div>
