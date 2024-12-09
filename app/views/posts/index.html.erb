@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Posts" %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Posts</h1>
+  
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @posts.each do |post| %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <%= render post %>
+          </div>
+          <div class="card-footer text-center">
+            <%= link_to "Show this post", post, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to "New post", new_post_path, class: "btn btn-success" %>
+  </div>
+</div>
