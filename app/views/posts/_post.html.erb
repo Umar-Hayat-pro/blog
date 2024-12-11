@@ -3,6 +3,7 @@
     <strong>Title:</strong>
     <%= post.title %>
   </p>
+  <h6>Posted By <%= post.user.email %></h6>
 <h6><%= pluralize(post.views, 'view')%></h6>
   <p>
     <strong>Body:</strong>
