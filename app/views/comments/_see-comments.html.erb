@@ -1,0 +1,15 @@
+<h6>Comments</h6>
+<div>
+  <% @article.comments.each do |comment| %>
+    <% unless comment.archived? %>
+      <div>
+        <span><%= comment.commenter %></span>
+        <pre><%= comment.body %></pre>
+      </div>
+      <%= link_to "Destroy Comment", [comment.article, comment], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+    <% end %>
+  <% end %>
+</div>
