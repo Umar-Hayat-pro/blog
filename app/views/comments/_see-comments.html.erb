@@ -1,15 +1,21 @@
 <h6>Comments</h6>
 <div>
-  <% @article.comments.each do |comment| %>
-    <% unless comment.archived? %>
-      <div>
-        <span><%= comment.commenter %></span>
-        <pre><%= comment.body %></pre>
-      </div>
-      <%= link_to "Destroy Comment", [comment.article, comment], data: {
+  <% if @article.comments.any? %>
+    <% @article.comments.each do |comment| %>
+      <% unless comment.archived? %>
+        <% if comment %>
+          <div>
+            <span><%= comment.commenter %></span>
+            <pre><%= comment.body %></pre>
+          </div>
+        <% end %>
+        <%= link_to "Destroy Comment", [comment.article, comment], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
                 } %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <p>No comments yet. Be the first to comment!</p>
+<% end %>
